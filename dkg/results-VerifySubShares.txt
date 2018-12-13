@@ -1,0 +1,415 @@
+API server listening at: 127.0.0.1:39832
+n=2    t=1 
+Verify private for index: 1
+time passed:  300.556µs
+Verify private for index: 2
+time passed:  310.904µs
+PASS
+
+------------------------------
+API server listening at: 127.0.0.1:19591
+n=4    t=2 
+Verify private for index: 1
+time passed:  415.934µs
+Verify private for index: 2
+time passed:  392.417µs
+Verify private for index: 3
+time passed:  411.82µs
+Verify private for index: 4
+time passed:  395.506µs
+PASS
+
+
+------------------------------
+API server listening at: 127.0.0.1:6763
+n=8    t=4 
+Verify private for index: 1
+time passed:  616.107µs
+Verify private for index: 2
+time passed:  597.18µs
+Verify private for index: 3
+time passed:  589.794µs
+Verify private for index: 4
+time passed:  573.77µs
+Verify private for index: 5
+time passed:  618.465µs
+Verify private for index: 6
+time passed:  617.359µs
+Verify private for index: 7
+time passed:  604.723µs
+Verify private for index: 8
+time passed:  590.351µs
+PASS
+
+
+------------------------------
+API server listening at: 127.0.0.1:14329
+n=10    t=5 
+Verify private for index: 1
+time passed:  688.939µs
+Verify private for index: 2
+time passed:  684.199µs
+Verify private for index: 3
+time passed:  816.222µs
+Verify private for index: 4
+time passed:  693.449µs
+Verify private for index: 5
+time passed:  695.109µs
+Verify private for index: 6
+time passed:  814.923µs
+Verify private for index: 7
+time passed:  693.75µs
+Verify private for index: 8
+time passed:  666.628µs
+Verify private for index: 9
+time passed:  719.963µs
+Verify private for index: 10
+time passed:  668.294µs
+PASS
+
+
+------------------------------
+n=20    t=10 
+Verify private for index: 1
+time passed:  1.131365ms
+Verify private for index: 2
+time passed:  1.16037ms
+Verify private for index: 3
+time passed:  1.16293ms
+Verify private for index: 4
+time passed:  1.150829ms
+Verify private for index: 5
+time passed:  1.148542ms
+Verify private for index: 6
+time passed:  1.147089ms
+Verify private for index: 7
+time passed:  1.124367ms
+Verify private for index: 8
+time passed:  1.138625ms
+Verify private for index: 9
+time passed:  1.155413ms
+Verify private for index: 10
+time passed:  1.249054ms
+Verify private for index: 11
+time passed:  1.200367ms
+Verify private for index: 12
+time passed:  1.150988ms
+Verify private for index: 13
+time passed:  1.163511ms
+Verify private for index: 14
+time passed:  1.115124ms
+Verify private for index: 15
+time passed:  1.147879ms
+Verify private for index: 16
+time passed:  1.091904ms
+Verify private for index: 17
+time passed:  1.131762ms
+Verify private for index: 18
+time passed:  1.154153ms
+Verify private for index: 19
+time passed:  1.132842ms
+Verify private for index: 20
+time passed:  1.10844ms
+PASS
+------------------------------
+
+API server listening at: 127.0.0.1:8010
+n=100    t=50 
+Verify private for index: 1
+time passed:  4.897276ms
+Verify private for index: 2
+time passed:  4.944833ms
+Verify private for index: 3
+time passed:  4.872325ms
+Verify private for index: 4
+time passed:  4.960737ms
+Verify private for index: 5
+time passed:  5.017158ms
+Verify private for index: 6
+time passed:  4.955023ms
+Verify private for index: 7
+time passed:  5.08008ms
+Verify private for index: 8
+time passed:  4.981804ms
+Verify private for index: 9
+time passed:  5.088483ms
+Verify private for index: 10
+time passed:  5.095692ms
+Verify private for index: 11
+time passed:  5.094823ms
+Verify private for index: 12
+time passed:  5.111942ms
+Verify private for index: 13
+time passed:  5.165044ms
+Verify private for index: 14
+time passed:  5.057509ms
+Verify private for index: 15
+time passed:  5.083959ms
+Verify private for index: 16
+time passed:  5.086463ms
+Verify private for index: 17
+time passed:  5.220488ms
+Verify private for index: 18
+time passed:  5.095971ms
+Verify private for index: 19
+time passed:  5.203113ms
+Verify private for index: 20
+time passed:  5.138988ms
+Verify private for index: 21
+time passed:  5.231055ms
+Verify private for index: 22
+time passed:  5.518322ms
+Verify private for index: 23
+time passed:  5.223614ms
+Verify private for index: 24
+time passed:  5.148399ms
+Verify private for index: 25
+time passed:  5.240625ms
+Verify private for index: 26
+time passed:  5.15949ms
+Verify private for index: 27
+time passed:  5.227149ms
+Verify private for index: 28
+time passed:  5.177041ms
+Verify private for index: 29
+time passed:  5.207689ms
+Verify private for index: 30
+time passed:  5.178099ms
+Verify private for index: 31
+time passed:  5.238497ms
+Verify private for index: 32
+time passed:  5.207874ms
+Verify private for index: 33
+time passed:  5.219933ms
+Verify private for index: 34
+time passed:  5.224062ms
+Verify private for index: 35
+time passed:  5.238289ms
+Verify private for index: 36
+time passed:  5.331703ms
+Verify private for index: 37
+time passed:  5.224381ms
+Verify private for index: 38
+time passed:  5.196357ms
+Verify private for index: 39
+time passed:  5.216231ms
+Verify private for index: 40
+time passed:  5.208936ms
+Verify private for index: 41
+time passed:  5.239267ms
+Verify private for index: 42
+time passed:  5.193987ms
+Verify private for index: 43
+time passed:  5.193092ms
+Verify private for index: 44
+time passed:  5.216811ms
+Verify private for index: 45
+time passed:  5.243569ms
+Verify private for index: 46
+time passed:  5.269014ms
+Verify private for index: 47
+time passed:  5.237968ms
+Verify private for index: 48
+time passed:  5.242668ms
+Verify private for index: 49
+time passed:  5.273765ms
+Verify private for index: 50
+time passed:  5.23187ms
+Verify private for index: 51
+time passed:  5.335719ms
+Verify private for index: 52
+time passed:  5.225954ms
+Verify private for index: 53
+time passed:  5.260669ms
+Verify private for index: 54
+time passed:  5.209777ms
+Verify private for index: 55
+time passed:  5.215661ms
+Verify private for index: 56
+time passed:  5.283539ms
+Verify private for index: 57
+time passed:  5.270781ms
+Verify private for index: 58
+time passed:  5.17261ms
+Verify private for index: 59
+time passed:  5.300293ms
+Verify private for index: 60
+time passed:  5.321342ms
+Verify private for index: 61
+time passed:  5.276789ms
+Verify private for index: 62
+time passed:  5.191037ms
+Verify private for index: 63
+time passed:  5.223036ms
+Verify private for index: 64
+time passed:  5.221383ms
+Verify private for index: 65
+time passed:  5.340452ms
+Verify private for index: 66
+time passed:  5.225512ms
+Verify private for index: 67
+time passed:  5.194636ms
+Verify private for index: 68
+time passed:  5.290832ms
+Verify private for index: 69
+time passed:  5.28651ms
+Verify private for index: 70
+time passed:  5.339157ms
+Verify private for index: 71
+time passed:  5.279358ms
+Verify private for index: 72
+time passed:  5.33843ms
+Verify private for index: 73
+time passed:  5.325675ms
+Verify private for index: 74
+time passed:  5.321629ms
+Verify private for index: 75
+time passed:  5.274802ms
+Verify private for index: 76
+time passed:  5.334923ms
+Verify private for index: 77
+time passed:  5.306863ms
+Verify private for index: 78
+time passed:  5.249128ms
+Verify private for index: 79
+time passed:  5.395879ms
+Verify private for index: 80
+time passed:  5.346776ms
+Verify private for index: 81
+time passed:  5.33077ms
+Verify private for index: 82
+time passed:  5.376274ms
+Verify private for index: 83
+time passed:  5.534937ms
+Verify private for index: 84
+time passed:  5.347159ms
+Verify private for index: 85
+time passed:  5.38495ms
+Verify private for index: 86
+time passed:  5.38572ms
+Verify private for index: 87
+time passed:  5.480554ms
+Verify private for index: 88
+time passed:  5.386478ms
+Verify private for index: 89
+time passed:  5.297493ms
+Verify private for index: 90
+time passed:  5.205038ms
+Verify private for index: 91
+time passed:  5.349584ms
+Verify private for index: 92
+time passed:  5.28634ms
+Verify private for index: 93
+time passed:  5.30876ms
+Verify private for index: 94
+time passed:  5.271801ms
+Verify private for index: 95
+time passed:  5.323196ms
+Verify private for index: 96
+time passed:  5.307931ms
+Verify private for index: 97
+time passed:  5.309726ms
+Verify private for index: 98
+time passed:  5.296288ms
+Verify private for index: 99
+time passed:  5.328957ms
+Verify private for index: 100
+time passed:  5.287158ms
+
+
+------------------------------
+
+API server listening at: 127.0.0.1:38216
+n=1000    t=500 
+Verify private for index: 1
+time passed:  43.135059ms
+Verify private for index: 2
+time passed:  46.979809ms
+Verify private for index: 3
+time passed:  47.569473ms
+Verify private for index: 4
+time passed:  47.755893ms
+Verify private for index: 5
+time passed:  47.95396ms
+Verify private for index: 6
+time passed:  47.917596ms
+Verify private for index: 7
+time passed:  48.253371ms
+Verify private for index: 8
+time passed:  48.321011ms
+Verify private for index: 9
+time passed:  48.159541ms
+Verify private for index: 10
+time passed:  48.300485ms
+Verify private for index: 11
+time passed:  48.414779ms
+Verify private for index: 12
+time passed:  48.535532ms
+Verify private for index: 13
+time passed:  48.34654ms
+Verify private for index: 14
+time passed:  48.495353ms
+Verify private for index: 15
+time passed:  48.571275ms
+Verify private for index: 16
+time passed:  48.319646ms
+Verify private for index: 17
+time passed:  49.091938ms
+Verify private for index: 18
+time passed:  48.323455ms
+Verify private for index: 19
+time passed:  48.440282ms
+Verify private for index: 20
+time passed:  48.406741ms
+Verify private for index: 21
+time passed:  48.377669ms
+Verify private for index: 22
+time passed:  48.474599ms
+Verify private for index: 23
+time passed:  48.652353ms
+Verify private for index: 24
+time passed:  48.550757ms
+Verify private for index: 25
+time passed:  48.461566ms
+Verify private for index: 26
+time passed:  48.705509ms
+Verify private for index: 27
+time passed:  48.753114ms
+Verify private for index: 28
+time passed:  48.623079ms
+Verify private for index: 29
+time passed:  48.471261ms
+Verify private for index: 30
+time passed:  48.463279ms
+Verify private for index: 31
+time passed:  48.678529ms
+Verify private for index: 32
+time passed:  48.586156ms
+Verify private for index: 33
+time passed:  49.840309ms
+Verify private for index: 34
+time passed:  52.057091ms
+Verify private for index: 35
+time passed:  51.936105ms
+Verify private for index: 36
+time passed:  49.333872ms
+Verify private for index: 37
+time passed:  52.035864ms
+Verify private for index: 38
+time passed:  50.648947ms
+Verify private for index: 39
+time passed:  50.876298ms
+Verify private for index: 40
+time passed:  51.076456ms
+Verify private for index: 41
+time passed:  50.963122ms
+Verify private for index: 42
+time passed:  49.713303ms
+Verify private for index: 43
+time passed:  51.568639ms
+Verify private for index: 44
+time passed:  50.703378ms
+Verify private for index: 45
+
+
+------------------------------

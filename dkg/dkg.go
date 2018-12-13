@@ -2,9 +2,11 @@ package dkg
 
 import (
 	"crypto/rand"
+	"crypto/sha256"
 	"fmt"
 	"math/big"
 
+	"github.com/cbergoon/merkletree"
 	. "github.com/orbs-network/bgls/bgls"   // nolint: golint
 	. "github.com/orbs-network/bgls/curves" // nolint: golint
 )
@@ -188,4 +190,51 @@ func encryptOrDecrypt(curve CurveSystem, sk *big.Int, pk Point, data *big.Int) *
 		hSecret[startFrom+i] ^= dataB[i]
 	}
 	return big.NewInt(0).SetBytes(hSecret[:])
+}
+
+type Content struct {
+	x *big.Int
+}
+
+//CalculateHash hashes the values of a Content
+func (t Content) CalculateHash() ([]byte, error) {
+	h := sha256.New()
+	if _, err := h.Write(t.x.Bytes()); err != nil {
+		return nil, err
+	}
+
+	return h.Sum(nil), nil
+}
+
+//Equals tests for equality of two Contents
+func (t Content) Equals(other merkletree.Content) (bool, error) {
+	return t.x == other.(Content).x, nil
+}
+
+func CreateMerkleCommitment(pubCommitG1 []Point, pubCommitG2 []Point) []byte {
+	var list []merkletree.Content
+
+	for _, pubCommit := range pubCommitG1 {
+		list = append(list, Content{x: pubCommit.ToAffineCoords()[0]})
+		list = append(list, Content{x: pubCommit.ToAffineCoords()[1]})
+	}
+	for _, pubCommit := range pubCommitG2 {
+		list = append(list, Content{x: pubCommit.ToAffineCoords()[0]})
+		list = append(list, Content{x: pubCommit.ToAffineCoords()[1]})
+		list = append(list, Content{x: pubCommit.ToAffineCoords()[2]})
+		list = append(list, Content{x: pubCommit.ToAffineCoords()[3]})
+	}
+
+	tree, err := merkletree.NewTree(list)
+	if err != nil {
+		panic(err)
+	}
+
+	mr := tree.MerkleRoot()
+
+	return mr
+	// fmt.Printf("MTR:  %v\n", hex.EncodeToString(mr))
+	// fmt.Printf(hex.EncodeToString(tree.Root.Left.Hash))
+	// fmt.Printf("\n")
+	// fmt.Printf(tree.String())
 }
