@@ -14,8 +14,8 @@ import (
 )
 
 var curves = []CurveSystem{Altbn128}
-var threshold = 50
-var n = 100
+var threshold = 20
+var n = 40
 
 func TestDKGTime(t *testing.T) {
 	for _, curve := range curves {
@@ -610,4 +610,51 @@ func TestGenerateFile(t *testing.T) {
 
 		WriteJsonToFile(scheme)
 	}
+}
+
+func TestAdjustFile(t *testing.T) {
+	data := ReadFileToJson()
+
+	threshold = data.Params.T
+	n = data.Params.N
+	for _, curve := range curves {
+
+		commitG1AggAll := make([][]Point, n)
+		commitG1AggAllStr := make([][][2]string, n)
+
+		for participant := 0; participant < n; participant++ {
+
+			commitG1Agg := make([]Point, n)
+			commitG1AggStr := make([][2]string, n)
+
+			for i := 0; i < threshold+1; i++ {
+				x, _ := big.NewInt(0).SetString(data.DkgData.PubCommitG1[participant][i][0], 10)
+				y, _ := big.NewInt(0).SetString(data.DkgData.PubCommitG1[participant][i][1], 10)
+
+				commitG1Agg[i], _ = curve.MakeG1Point([]*big.Int{x, y}, true)
+
+				if i > 0 {
+					commitG1Agg[i], _ = commitG1Agg[i-1].Add(commitG1Agg[i])
+				}
+
+				commitG1AggStr[i][0] = commitG1Agg[i].ToAffineCoords()[0].String()
+				commitG1AggStr[i][1] = commitG1Agg[i].ToAffineCoords()[1].String()
+			}
+			commitG1AggAll[participant] = commitG1Agg
+			commitG1AggAllStr[participant] = commitG1AggStr
+		}
+
+		jsonCalc := &calculations{
+			AggCommit: commitG1AggAllStr,
+		}
+
+		jsonComp := &complaint{
+			Calculations: *jsonCalc,
+		}
+
+		data.Complaint = *jsonComp
+
+		WriteJsonToFile(data)
+	}
+
 }

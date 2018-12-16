@@ -3,12 +3,21 @@ package dkg
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 )
 
 type dkgParams struct {
 	N int `json:"n"`
 	T int `json:"t"`
+}
+
+type calculations struct {
+	AggCommit [][][2]string `json:"aggregated_commitments"`
+}
+
+type complaint struct {
+	Calculations calculations `json:"calculations"`
 }
 
 type dkgData struct {
@@ -29,10 +38,17 @@ type postDkgData struct {
 	GroupSK string      `json:"groupSK"`
 }
 
+// type schemeData struct {
+// 	Params  dkgParams   `json:"params"`
+// 	DkgData dkgData     `json:"dkgData"`
+// 	PostDkg postDkgData `json:"postDkg"`
+// }
+
 type schemeData struct {
-	Params  dkgParams   `json:"params"`
-	DkgData dkgData     `json:"dkgData"`
-	PostDkg postDkgData `json:"postDkg"`
+	Params    dkgParams   `json:"params"`
+	Complaint complaint   `json:"complaint"`
+	DkgData   dkgData     `json:"dkgData"`
+	PostDkg   postDkgData `json:"postDkg"`
 }
 
 func check(e error) {
@@ -54,4 +70,19 @@ func WriteJsonToFile(data schemeData) {
 	n3, err := f.WriteString("module.exports = " + string(js))
 	fmt.Printf("wrote %d bytes\n", n3)
 	f.Sync()
+}
+
+func ReadFileToJson() schemeData {
+	f, err := os.Open("happyFlowData1.js")
+
+	check(err)
+	defer f.Close()
+
+	byteValue, _ := ioutil.ReadAll(f)
+
+	var data schemeData
+
+	json.Unmarshal(byteValue, &data)
+
+	return data
 }
