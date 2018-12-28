@@ -619,33 +619,56 @@ func TestAdjustFile(t *testing.T) {
 	n = data.Params.N
 	for _, curve := range curves {
 
-		commitG1AggAll := make([][]Point, n)
-		commitG1AggAllStr := make([][][2]string, n)
+		commitG1AggAll := make([]aggCommit, n)
+		// commitG1AggAllStr := make([][][][2]string, n)
 
 		for participant := 0; participant < n; participant++ {
 
-			commitG1Agg := make([]Point, n)
-			commitG1AggStr := make([][2]string, n)
+			commitG1AggPar := make([][]Point, n)
+			commitG1AggParStr := make([][][2]string, n)
 
-			for i := 0; i < threshold+1; i++ {
-				x, _ := big.NewInt(0).SetString(data.DkgData.PubCommitG1[participant][i][0], 10)
-				y, _ := big.NewInt(0).SetString(data.DkgData.PubCommitG1[participant][i][1], 10)
+			for committedParticipant := 0; committedParticipant < n; committedParticipant++ {
 
-				commitG1Agg[i], _ = curve.MakeG1Point([]*big.Int{x, y}, true)
+				index := big.NewInt(int64(committedParticipant + 1))
 
-				if i > 0 {
-					commitG1Agg[i], _ = commitG1Agg[i-1].Add(commitG1Agg[i])
+				commitG1Agg := make([]Point, threshold+1)
+				commitG1AggStr := make([][2]string, threshold+1)
+
+				if committedParticipant == participant {
+					continue
 				}
 
-				commitG1AggStr[i][0] = commitG1Agg[i].ToAffineCoords()[0].String()
-				commitG1AggStr[i][1] = commitG1Agg[i].ToAffineCoords()[1].String()
+				for i := 0; i < threshold+1; i++ {
+
+					x, _ := big.NewInt(0).SetString(data.DkgData.PubCommitG1[participant][i][0], 10)
+					y, _ := big.NewInt(0).SetString(data.DkgData.PubCommitG1[participant][i][1], 10)
+
+					commitG1Agg[i], _ = curve.MakeG1Point([]*big.Int{x, y}, true)
+
+				}
+				commitG1Agg = CalculateExponentiatedPoints(curve, index, commitG1Agg)
+				for i := 0; i < threshold+1; i++ {
+					if i > 0 {
+						commitG1Agg[i], _ = commitG1Agg[i-1].Add(commitG1Agg[i])
+					}
+
+					commitG1AggStr[i][0] = commitG1Agg[i].ToAffineCoords()[0].String()
+					commitG1AggStr[i][1] = commitG1Agg[i].ToAffineCoords()[1].String()
+				}
+				commitG1AggPar[committedParticipant] = commitG1Agg
+				commitG1AggParStr[committedParticipant] = commitG1AggStr
 			}
-			commitG1AggAll[participant] = commitG1Agg
-			commitG1AggAllStr[participant] = commitG1AggStr
+			jsonAggCommit := aggCommit{
+				Index:     participant + 1,
+				AggCommit: commitG1AggParStr,
+			}
+			commitG1AggAll[participant] = jsonAggCommit
+			// commitG1AggAll[participant] = commitG1AggPar
+			// commitG1AggAllStr[participant] = commitG1AggParStr
 		}
 
 		jsonCalc := &calculations{
-			AggCommit: commitG1AggAllStr,
+			PrvCommitCalc: commitG1AggAll,
 		}
 
 		jsonComp := &complaint{

@@ -76,6 +76,18 @@ func VerifyPrivateCommitment(curve CurveSystem, myIndex *big.Int, prvCommit *big
 //participant with index
 //pubCommit (G1/G2) is the public commitments of the participant represented by index
 func CalculatePrivateCommitment(curve CurveSystem, index *big.Int, pubCommit []Point) Point {
+	// pubCommitExp := make([]Point, len(pubCommit))
+	// j := big.NewInt(0)
+	// for i, pubCommit := range pubCommit {
+	// 	scalar := big.NewInt(0).Exp(index, j, curve.GetG1Order())
+	// 	pubCommitExp[i] = pubCommit.Mul(scalar)
+	// 	j.Add(j, big.NewInt(1))
+	// }
+	return AggregatePoints(CalculateExponentiatedPoints(curve, index, pubCommit))
+}
+
+//
+func CalculateExponentiatedPoints(curve CurveSystem, index *big.Int, pubCommit []Point) []Point {
 	pubCommitExp := make([]Point, len(pubCommit))
 	j := big.NewInt(0)
 	for i, pubCommit := range pubCommit {
@@ -83,7 +95,7 @@ func CalculatePrivateCommitment(curve CurveSystem, index *big.Int, pubCommit []P
 		pubCommitExp[i] = pubCommit.Mul(scalar)
 		j.Add(j, big.NewInt(1))
 	}
-	return AggregatePoints(pubCommitExp)
+	return pubCommitExp
 }
 
 //GetSecretKey returns the secret key generated after the DKG scheme has done

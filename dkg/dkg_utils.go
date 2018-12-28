@@ -12,8 +12,13 @@ type dkgParams struct {
 	T int `json:"t"`
 }
 
-type calculations struct {
+type aggCommit struct {
+	Index     int           `json:"index"`
 	AggCommit [][][2]string `json:"aggregated_commitments"`
+}
+
+type calculations struct {
+	PrvCommitCalc []aggCommit `json:"prvCommitCalc"`
 }
 
 type complaint struct {
